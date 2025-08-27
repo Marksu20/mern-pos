@@ -1,12 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider
+} from "react-router-dom"
+import MainLayout from "./layouts/MainLayout"
+import HomePage from "./pages/HomePage"
 
 function App() {
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<HomePage />} />
+        
+      </Route>
+    )
+  );
+
   return (
-    <div>React POS</div>
+    <>
+      <RouterProvider router={router} />
+    </>
   )
 }
 
